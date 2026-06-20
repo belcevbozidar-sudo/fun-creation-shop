@@ -29,7 +29,7 @@ export const Home: React.FC = () => {
         <div className="hero-overlay"></div>
         <div className="container hero-content">
           <div className="badge-promo pulse-glow"><Flame size={14} /> НОВА РОК КОЛЕКЦИЯ</div>
-          <h1 className="hero-title rock-title rock-glow">Heritage & Metal</h1>
+          <h1 className="hero-title rock-title rock-glow">FUN CREATION</h1>
           <p className="hero-subtitle">
             Историята на България оживява в тежък китарен риф. Авторски тениски с възрожденци, принт он деманд мърч и луди 3D принтирани рок артикули.
           </p>
@@ -40,6 +40,21 @@ export const Home: React.FC = () => {
             <button className="btn-rock-secondary" onClick={() => navigateTo('custom')}>
               Направи Си Мърч
             </button>
+          </div>
+
+          {/* Infinite Scrolling Ticker Ribbon */}
+          <div className="hero-ticker-wrap">
+            <div className="hero-ticker">
+              <span className="ticker-text">ВЪЗРОЖДЕНЦИ, ЦАРЕ & ХУДОЖНИЦИ 🤘</span>
+              <span className="ticker-text">ПРИНТ ОН ДЕМАНД (PoD) 🤘</span>
+              <span className="ticker-text">3D ПРИНТИРАНЕ 🤘</span>
+              <span className="ticker-text">ВЪЗРОЖДЕНЦИ, ЦАРЕ & ХУДОЖНИЦИ 🤘</span>
+              <span className="ticker-text">ПРИНТ ОН ДЕМАНД (PoD) 🤘</span>
+              <span className="ticker-text">3D ПРИНТИРАНЕ 🤘</span>
+              <span className="ticker-text">ВЪЗРОЖДЕНЦИ, ЦАРЕ & ХУДОЖНИЦИ 🤘</span>
+              <span className="ticker-text">ПРИНТ ОН ДЕМАНД (PoD) 🤘</span>
+              <span className="ticker-text">3D ПРИНТИРАНЕ 🤘</span>
+            </div>
           </div>
         </div>
       </section>
@@ -133,6 +148,49 @@ export const Home: React.FC = () => {
           display: flex;
           flex-direction: column;
           align-items: center;
+        }
+
+        .hero-ticker-wrap {
+          width: 100vw;
+          position: relative;
+          left: 50%;
+          right: 50%;
+          margin-left: -50vw;
+          margin-right: -50vw;
+          overflow: hidden;
+          background: var(--color-accent);
+          padding: 12px 0;
+          margin-top: 40px;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 4px 15px rgba(255, 42, 75, 0.2);
+          display: flex;
+          align-items: center;
+        }
+
+        .hero-ticker {
+          display: flex;
+          white-space: nowrap;
+          animation: ticker-scroll 20s linear infinite;
+        }
+
+        .ticker-text {
+          display: inline-block;
+          padding: 0 40px;
+          font-size: 0.95rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          color: #ffffff;
+          letter-spacing: 1.5px;
+        }
+
+        @keyframes ticker-scroll {
+          0% {
+            transform: translate3d(0, 0, 0);
+          }
+          100% {
+            transform: translate3d(-33.33%, 0, 0);
+          }
         }
 
         .badge-promo {
