@@ -134,7 +134,7 @@ export const Home: React.FC = () => {
           background: linear-gradient(rgba(10, 10, 11, 0.4), rgba(10, 10, 11, 0.95)), 
                       radial-gradient(circle at 80% 20%, rgba(255, 42, 75, 0.15) 0%, transparent 50%),
                       #0c0c0e;
-          padding: 140px 0 100px;
+          padding: 140px 0 0;
           text-align: center;
           border-bottom: 1px solid var(--border-color);
           overflow: hidden;
@@ -230,7 +230,7 @@ export const Home: React.FC = () => {
             font-size: 1rem;
           }
           .hero-section {
-            padding: 90px 0 70px;
+            padding: 90px 0 0;
           }
           .hero-cta-group {
             flex-direction: column;
