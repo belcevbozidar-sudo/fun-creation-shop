@@ -10,7 +10,6 @@ import { Category } from './pages/Category';
 import { ProductDetail } from './pages/ProductDetail';
 import { CustomOrders } from './pages/CustomOrders';
 import { Checkout } from './pages/Checkout';
-import { Admin } from './pages/Admin';
 
 const AppContent: React.FC = () => {
   const { currentPage } = useStore();
@@ -27,8 +26,6 @@ const AppContent: React.FC = () => {
         return <CustomOrders />;
       case 'checkout':
         return <Checkout />;
-      case 'admin':
-        return <Admin />;
       default:
         return <Home />;
     }

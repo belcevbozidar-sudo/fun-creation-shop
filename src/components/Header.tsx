@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useStore } from '../context/StoreContext';
-import { ShoppingCart, Menu, X, ShieldAlert, Award, Printer, Cpu } from 'lucide-react';
+import { ShoppingCart, Menu, X, Award, Printer, Cpu } from 'lucide-react';
 
 export const Header: React.FC = () => {
   const { cartCount, toggleCart, currentPage, navigateTo } = useStore();
@@ -12,12 +12,12 @@ export const Header: React.FC = () => {
     { id: '3dprint', label: '3D Принтиране', icon: <Cpu size={18} /> },
   ];
 
-  const handleNavClick = (page: 'home' | 'category' | 'custom' | 'admin', categoryId?: string) => {
+  const handleNavClick = (page: 'home' | 'category' | 'custom', categoryId?: string) => {
     setIsMobileMenuOpen(false);
     if (page === 'category' && categoryId) {
       navigateTo('category', categoryId);
     } else {
-      navigateTo(page);
+      navigateTo(page as any);
     }
   };
 
@@ -58,14 +58,7 @@ export const Header: React.FC = () => {
 
         {/* Actions */}
         <div className="header-actions">
-          {/* Admin panel button */}
-          <button 
-            className="admin-btn-header" 
-            title="Админ панел (Поръчки)"
-            onClick={() => handleNavClick('admin')}
-          >
-            <ShieldAlert size={20} />
-          </button>
+
 
           {/* Cart Trigger */}
           <button className="cart-trigger headbang-hover" onClick={() => toggleCart(true)}>
@@ -111,13 +104,7 @@ export const Header: React.FC = () => {
             Индивидуална Поръчка
           </button>
 
-          <button 
-            className="mobile-nav-link admin-highlight"
-            onClick={() => handleNavClick('admin')}
-          >
-            <span className="mobile-nav-icon"><ShieldAlert size={18} /></span>
-            Админ Панел
-          </button>
+
         </nav>
       </div>
 
@@ -209,17 +196,7 @@ export const Header: React.FC = () => {
           gap: 15px;
         }
 
-        .admin-btn-header {
-          color: var(--text-secondary);
-          transition: var(--transition-fast);
-          padding: 8px;
-          border-radius: 50%;
-        }
 
-        .admin-btn-header:hover {
-          color: var(--color-gold);
-          background: rgba(255, 179, 0, 0.1);
-        }
 
         .cart-trigger {
           position: relative;
@@ -323,18 +300,7 @@ export const Header: React.FC = () => {
           border: 1px solid rgba(255, 42, 75, 0.2);
         }
 
-        .admin-highlight {
-          color: var(--color-gold);
-          font-size: 1.1rem;
-          margin-top: 20px;
-          border-top: 1px solid var(--border-color);
-          border-radius: 0;
-          padding-top: 20px;
-        }
 
-        .admin-highlight .mobile-nav-icon {
-          color: var(--color-gold);
-        }
 
         @media (max-width: 900px) {
           .desktop-nav {

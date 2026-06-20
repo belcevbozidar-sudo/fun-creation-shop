@@ -41,20 +41,20 @@ export const Home: React.FC = () => {
               Направи Си Мърч
             </button>
           </div>
+        </div>
 
-          {/* Infinite Scrolling Ticker Ribbon */}
-          <div className="hero-ticker-wrap">
-            <div className="hero-ticker">
-              <span className="ticker-text">ВЪЗРОЖДЕНЦИ, ЦАРЕ & ХУДОЖНИЦИ 🤘</span>
-              <span className="ticker-text">ПРИНТ ОН ДЕМАНД (PoD) 🤘</span>
-              <span className="ticker-text">3D ПРИНТИРАНЕ 🤘</span>
-              <span className="ticker-text">ВЪЗРОЖДЕНЦИ, ЦАРЕ & ХУДОЖНИЦИ 🤘</span>
-              <span className="ticker-text">ПРИНТ ОН ДЕМАНД (PoD) 🤘</span>
-              <span className="ticker-text">3D ПРИНТИРАНЕ 🤘</span>
-              <span className="ticker-text">ВЪЗРОЖДЕНЦИ, ЦАРЕ & ХУДОЖНИЦИ 🤘</span>
-              <span className="ticker-text">ПРИНТ ОН ДЕМАНД (PoD) 🤘</span>
-              <span className="ticker-text">3D ПРИНТИРАНЕ 🤘</span>
-            </div>
+        {/* Infinite Scrolling Ticker Ribbon */}
+        <div className="hero-ticker-wrap">
+          <div className="hero-ticker">
+            <span className="ticker-text">ВЪЗРОЖДЕНЦИ, ЦАРЕ & ХУДОЖНИЦИ 🤘</span>
+            <span className="ticker-text">ПРИНТ ОН ДЕМАНД (PoD) 🤘</span>
+            <span className="ticker-text">3D ПРИНТИРАНЕ 🤘</span>
+            <span className="ticker-text">ВЪЗРОЖДЕНЦИ, ЦАРЕ & ХУДОЖНИЦИ 🤘</span>
+            <span className="ticker-text">ПРИНТ ОН ДЕМАНД (PoD) 🤘</span>
+            <span className="ticker-text">3D ПРИНТИРАНЕ 🤘</span>
+            <span className="ticker-text">ВЪЗРОЖДЕНЦИ, ЦАРЕ & ХУДОЖНИЦИ 🤘</span>
+            <span className="ticker-text">ПРИНТ ОН ДЕМАНД (PoD) 🤘</span>
+            <span className="ticker-text">3D ПРИНТИРАНЕ 🤘</span>
           </div>
         </div>
       </section>
@@ -151,12 +151,7 @@ export const Home: React.FC = () => {
         }
 
         .hero-ticker-wrap {
-          width: 100vw;
-          position: relative;
-          left: 50%;
-          right: 50%;
-          margin-left: -50vw;
-          margin-right: -50vw;
+          width: 100%;
           overflow: hidden;
           background: var(--color-accent);
           padding: 12px 0;

@@ -42,7 +42,7 @@ export interface CustomRequest {
 }
 
 interface StoreContextType {
-  currentPage: 'home' | 'category' | 'product' | 'custom' | 'checkout' | 'admin';
+  currentPage: 'home' | 'category' | 'product' | 'custom' | 'checkout';
   activeCategoryId: string | null;
   activeProductId: string | null;
   cart: CartItem[];
@@ -53,7 +53,7 @@ interface StoreContextType {
   isCartOpen: boolean;
   
   // Navigation
-  navigateTo: (page: 'home' | 'category' | 'product' | 'custom' | 'checkout' | 'admin', categoryId?: string | null, productId?: string | null) => void;
+  navigateTo: (page: 'home' | 'category' | 'product' | 'custom' | 'checkout', categoryId?: string | null, productId?: string | null) => void;
   
   // Cart Actions
   addToCart: (product: Product, quantity: number, size?: string, option?: string) => void;
@@ -139,8 +139,6 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         setActiveProductId(null);
       } else if (hash === '#checkout') {
         setCurrentPage('checkout');
-      } else if (hash === '#admin') {
-        setCurrentPage('admin');
       }
     };
 
@@ -165,7 +163,6 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     else if (page === 'product' && productId) window.location.hash = `product/${productId}`;
     else if (page === 'custom') window.location.hash = 'custom';
     else if (page === 'checkout') window.location.hash = 'checkout';
-    else if (page === 'admin') window.location.hash = 'admin';
     
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
