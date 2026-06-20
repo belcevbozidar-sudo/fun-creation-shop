@@ -87,14 +87,14 @@ export const Admin: React.FC = () => {
                             {item.selectedOption && ` (${item.selectedOption})`}
                             <strong> x{item.quantity}</strong>
                           </span>
-                          <span>{(item.product.price * item.quantity).toFixed(2)} лв.</span>
+                          <span>{(item.product.price * item.quantity).toFixed(2)} €</span>
                         </div>
                       ))}
                     </div>
 
                     <div className="card-footer">
                       <span><strong>Плащане:</strong> {order.shippingDetails.paymentMethod}</span>
-                      <span className="order-total text-neon-red">Общо: {order.total.toFixed(2)} лв.</span>
+                      <span className="order-total text-neon-red">Общо: {order.total.toFixed(2)} €</span>
                     </div>
                   </div>
                 ))}

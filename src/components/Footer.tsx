@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
           <ul className="contact-list">
             <li>
               <Phone size={16} className="contact-icon" />
-              <span>+359 888 666 999</span>
+              <span>089 2 3 4 2 8 6 0</span>
             </li>
             <li>
               <Mail size={16} className="contact-icon" />

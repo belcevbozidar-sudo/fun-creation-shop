@@ -67,10 +67,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </span>
 
       {/* Image Area */}
-      <div className="product-image-container" style={{ background: getFallbackGradient(product.id) }}>
-        <div className="product-graphic-fallback">
-          <span className="product-emoji">{getProductEmoji(product.id)}</span>
-        </div>
+      <div className="product-image-container">
+        {product.image ? (
+          <img src={product.image} alt={product.name} className="product-card-image" />
+        ) : (
+          <div className="product-graphic-fallback" style={{ background: getFallbackGradient(product.id) }}>
+            <span className="product-emoji">{getProductEmoji(product.id)}</span>
+          </div>
+        )}
         
         {/* Overlay on hover */}
         <div className="product-image-overlay">
@@ -88,15 +92,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </p>
 
         <div className="product-footer">
-          <div className="product-price">{product.price.toFixed(2)} лв.</div>
+          <div className="product-price">{product.price.toFixed(2)} €</div>
           
           <button 
             className="btn-quick-add pulse-glow"
             onClick={handleQuickAdd}
-            title={product.sizes || product.options ? "Избери опции" : "Добави в количката"}
+            title="Добави в количката"
           >
-            {product.sizes || product.options ? <Eye size={16} /> : <ShoppingCart size={16} />}
-            <span>{product.sizes || product.options ? "Виж" : "Купи"}</span>
+            <ShoppingCart size={16} />
+            <span>Добави в количка</span>
           </button>
         </div>
       </div>
@@ -136,9 +140,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           align-items: center;
           justify-content: center;
           border-bottom: 1px solid var(--border-color);
+          background: #0f0f12;
+        }
+
+        .product-card-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-card-image {
+          transform: scale(1.05);
         }
 
         .product-graphic-fallback {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           font-size: 4rem;
           user-select: none;
           transition: transform 0.5s ease;
@@ -213,8 +234,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
         .product-footer {
           display: flex;
-          align-items: center;
-          justify-content: space-between;
+          flex-direction: column;
+          gap: 12px;
+          align-items: stretch;
           margin-top: auto;
           border-top: 1px solid rgba(255, 255, 255, 0.05);
           padding-top: 15px;
@@ -231,8 +253,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           background: linear-gradient(135deg, var(--bg-hover) 0%, #17171d 100%);
           border: 1px solid var(--border-color);
           color: var(--text-primary);
-          padding: 8px 14px;
-          font-size: 0.85rem;
+          padding: 10px 16px;
+          font-size: 0.9rem;
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 0.5px;
@@ -240,7 +262,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           transition: var(--transition-fast);
           display: flex;
           align-items: center;
-          gap: 6px;
+          justify-content: center;
+          gap: 8px;
+          width: 100%;
         }
 
         .product-card:hover .btn-quick-add {

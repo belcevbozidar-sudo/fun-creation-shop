@@ -77,9 +77,13 @@ export const CartDrawer: React.FC = () => {
                   {/* Small preview */}
                   <div 
                     className="cart-item-preview" 
-                    style={{ background: getFallbackGradient(item.product.id) }}
+                    style={{ background: item.product.image ? 'none' : getFallbackGradient(item.product.id) }}
                   >
-                    <span>{getProductEmoji(item.product.id)}</span>
+                    {item.product.image ? (
+                      <img src={item.product.image} alt={item.product.name} className="cart-preview-image" />
+                    ) : (
+                      <span>{getProductEmoji(item.product.id)}</span>
+                    )}
                   </div>
 
                   {/* Details */}
@@ -112,7 +116,7 @@ export const CartDrawer: React.FC = () => {
                       </div>
 
                       <div className="cart-item-price-calc">
-                        <span>{(item.product.price * item.quantity).toFixed(2)} лв.</span>
+                        <span>{(item.product.price * item.quantity).toFixed(2)} €</span>
                       </div>
                     </div>
                   </div>
@@ -136,7 +140,7 @@ export const CartDrawer: React.FC = () => {
           <div className="cart-footer-summary">
             <div className="cart-summary-row">
               <span className="summary-label">Обща сума:</span>
-              <span className="summary-value text-neon-red">{cartTotal.toFixed(2)} лв.</span>
+              <span className="summary-value text-neon-red">{cartTotal.toFixed(2)} €</span>
             </div>
             
             <button 
@@ -259,6 +263,14 @@ export const CartDrawer: React.FC = () => {
           justify-content: center;
           font-size: 1.8rem;
           flex-shrink: 0;
+          overflow: hidden;
+        }
+
+        .cart-preview-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 4px;
         }
 
         .cart-item-details {

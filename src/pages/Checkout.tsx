@@ -75,13 +75,13 @@ export const Checkout: React.FC = () => {
                   {item.selectedOption && ` (${item.selectedOption})`}
                   <strong> x{item.quantity}</strong>
                 </span>
-                <span className="summary-item-price">{(item.product.price * item.quantity).toFixed(2)} лв.</span>
+                <span className="summary-item-price">{(item.product.price * item.quantity).toFixed(2)} €</span>
               </div>
             ))}
           </div>
           <div className="summary-total-row">
             <span>Общо платено:</span>
-            <span className="total-val text-neon-red">{placedOrder.total.toFixed(2)} лв.</span>
+            <span className="total-val text-neon-red">{placedOrder.total.toFixed(2)} €</span>
           </div>
           <div className="delivery-details-summary">
             <p><strong>Адрес за доставка:</strong> гр. {placedOrder.shippingDetails.city}, {placedOrder.shippingDetails.address}</p>
@@ -325,7 +325,11 @@ export const Checkout: React.FC = () => {
               {cart.map((item, idx) => (
                 <div key={idx} className="checkout-item-row">
                   <div className="checkout-item-preview-tiny">
-                    <span>{getProductEmoji(item.product.id)}</span>
+                    {item.product.image ? (
+                      <img src={item.product.image} alt={item.product.name} className="checkout-preview-image-tiny" />
+                    ) : (
+                      <span>{getProductEmoji(item.product.id)}</span>
+                    )}
                   </div>
                   <div className="checkout-item-details-tiny">
                     <h4>{item.product.name}</h4>
@@ -334,10 +338,10 @@ export const Checkout: React.FC = () => {
                       {item.selectedSize && item.selectedOption && ' | '}
                       {item.selectedOption && `${item.selectedOption}`}
                     </p>
-                    <span className="qty-and-price">{item.quantity} x {item.product.price.toFixed(2)} лв.</span>
+                    <span className="qty-and-price">{item.quantity} x {item.product.price.toFixed(2)} €</span>
                   </div>
                   <div className="checkout-item-total-tiny">
-                    {(item.product.price * item.quantity).toFixed(2)} лв.
+                    {(item.product.price * item.quantity).toFixed(2)} €
                   </div>
                 </div>
               ))}
@@ -346,7 +350,7 @@ export const Checkout: React.FC = () => {
             <div className="checkout-calc-block">
               <div className="calc-row">
                 <span>Междинна сума:</span>
-                <span>{cartTotal.toFixed(2)} лв.</span>
+                <span>{cartTotal.toFixed(2)} €</span>
               </div>
               <div className="calc-row">
                 <span>Доставка:</span>
@@ -354,7 +358,7 @@ export const Checkout: React.FC = () => {
               </div>
               <div className="calc-row total-calc-row">
                 <span>Общо:</span>
-                <span className="text-neon-red">{cartTotal.toFixed(2)} лв.</span>
+                <span className="text-neon-red">{cartTotal.toFixed(2)} €</span>
               </div>
             </div>
 
@@ -512,6 +516,14 @@ export const Checkout: React.FC = () => {
           justify-content: center;
           font-size: 1.3rem;
           flex-shrink: 0;
+          overflow: hidden;
+        }
+
+        .checkout-preview-image-tiny {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 4px;
         }
 
         .checkout-item-details-tiny {

@@ -82,14 +82,22 @@ export const ProductDetail: React.FC = () => {
       <div className="product-detail-grid">
         {/* Gallery / Image Column */}
         <div className="detail-image-col">
-          <div className="large-image-holder" style={{ background: getFallbackGradient(product.id) }}>
-            <span className="large-emoji">{getProductEmoji(product.id)}</span>
+          <div className="large-image-holder" style={{ background: product.image ? 'none' : getFallbackGradient(product.id) }}>
+            {product.image ? (
+              <img src={product.image} alt={product.name} className="detail-product-image" />
+            ) : (
+              <span className="large-emoji">{getProductEmoji(product.id)}</span>
+            )}
           </div>
 
           {/* Simulated thumbnails */}
           <div className="thumbnail-list">
-            <div className="thumbnail-item active" style={{ background: getFallbackGradient(product.id) }}>
-              <span>{getProductEmoji(product.id)}</span>
+            <div className="thumbnail-item active" style={{ background: product.image ? 'none' : getFallbackGradient(product.id) }}>
+              {product.image ? (
+                <img src={product.image} alt={product.name} className="thumbnail-product-image" />
+              ) : (
+                <span>{getProductEmoji(product.id)}</span>
+              )}
             </div>
             <div className="thumbnail-item" style={{ background: getFallbackGradient(product.id), opacity: 0.5 }}>
               <span>🖤</span>
@@ -104,7 +112,7 @@ export const ProductDetail: React.FC = () => {
         <div className="detail-info-col">
           <h1 className="detail-name">{product.name}</h1>
           <div className="detail-price-row">
-            <span className="detail-price text-neon-red">{product.price.toFixed(2)} лв.</span>
+            <span className="detail-price text-neon-red">{product.price.toFixed(2)} €</span>
             <span className="stock-status"><Check size={14} /> Налично</span>
           </div>
 
@@ -244,6 +252,13 @@ export const ProductDetail: React.FC = () => {
           align-items: center;
           justify-content: center;
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+          overflow: hidden;
+        }
+
+        .detail-product-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
 
         .large-emoji {
@@ -267,6 +282,13 @@ export const ProductDetail: React.FC = () => {
           justify-content: center;
           font-size: 2rem;
           transition: var(--transition-fast);
+          overflow: hidden;
+        }
+
+        .thumbnail-product-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
 
         .thumbnail-item:hover, .thumbnail-item.active {
